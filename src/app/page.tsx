@@ -1,4 +1,4 @@
-import Workouts from "@/componants/shared/homepage/Workouts";
+import Workouts from "@/components/shared/homepage/Workouts";
 
 export default function Home() {
   return (
