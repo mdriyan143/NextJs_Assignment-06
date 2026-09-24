@@ -14,7 +14,7 @@ const getWorkouts = async (): Promise<Workout[]> => {
 
     return data;
   }
-  
+
   catch (error) {
     console.error("Error fetching workouts:", error);
 
@@ -30,25 +30,29 @@ const Workouts = async () => {
       id="library"
       className="bg-zinc-950 px-4 py-16 text-white sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
+
         <div className="mb-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-lime-400">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-lime-400">
             Workout Library
           </p>
 
-          <h2 className="mt-2 text-3xl font-bold uppercase sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-black uppercase tracking-tight sm:text-4xl">
             The Library
           </h2>
 
-          <p className="mt-3 text-zinc-400">
+          <p className="mt-3 text-sm text-zinc-500 sm:text-base">
             Twelve lifts covering every major muscle group.
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {workouts.map((workout) => (
-            <WorkoutCard key={workout.id} 
-            workout={workout}/>))}
+            <WorkoutCard
+              key={workout.id}
+              workout={workout} />
+          ))}
         </div>
+
       </div>
     </section>
   );
