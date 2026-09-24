@@ -13,13 +13,12 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
       href={`/workouts/${workout.id}`}
       className="group block overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 transition hover:-translate-y-1 hover:border-zinc-700"
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-zinc-800">
+      <div className="relative aspect-4/3 overflow-hidden bg-zinc-800">
         <Image
           src={workout.image}
           alt={workout.name}
           fill
-          className="object-cover transition duration-300 group-hover:scale-105"
-        />
+          className="object-cover transition duration-300 group-hover:scale-105"/>
       </div>
 
       <div className="p-5">
@@ -27,8 +26,7 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
           {workout.muscleGroups.map((group) => (
             <span
               key={group}
-              className="rounded-full bg-lime-400/10 px-3 py-1 text-xs font-semibold uppercase text-lime-400"
-            >
+              className="rounded-full bg-lime-400/10 px-3 py-1 text-xs font-semibold uppercase text-lime-400">
               {group}
             </span>
           ))}
