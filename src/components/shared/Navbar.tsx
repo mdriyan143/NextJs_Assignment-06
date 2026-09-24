@@ -1,8 +1,13 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 import logo from "@/assets/logo.png";
+import { PlanContext } from "@/context/PlanContext";
 
 const Navbar = () => {
+  const { plan, saved } = useContext(PlanContext);
+
   return (
     <nav className="border-b border-zinc-800 bg-zinc-950">
       <div className="navbar min-h-24 px-4 sm:px-6 lg:px-8">
@@ -43,7 +48,7 @@ const Navbar = () => {
             </span>
 
             <span className="flex h-6 min-w-6 items-center justify-center rounded-full bg-lime-400 px-2 text-xs font-bold text-black">
-              0
+              {plan.length}
             </span>
           </div>
 
@@ -53,7 +58,7 @@ const Navbar = () => {
             </span>
 
             <span className="flex h-6 min-w-6 items-center justify-center rounded-full border border-zinc-700 px-2 text-xs text-zinc-400">
-              0
+              {saved.length}
             </span>
           </div>
         </div>
