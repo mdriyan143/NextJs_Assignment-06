@@ -1,6 +1,7 @@
 "use client";
 
 import { useContext } from "react";
+import { toast } from "react-toastify";
 import { PlanContext } from "@/context/PlanContext";
 import type { Workout } from "@/types/workout.type";
 
@@ -17,10 +18,12 @@ const WorkoutActions = ({ workout }: WorkoutActionsProps) => {
     );
 
     if (alreadyAdded) {
+      toast.info("Workout is already in your plan.");
       return;
     }
 
     setPlan([...plan, workout]);
+    toast.success("Workout added to your plan.");
   };
 
   const handleSave = () => {
@@ -29,10 +32,12 @@ const WorkoutActions = ({ workout }: WorkoutActionsProps) => {
     );
 
     if (alreadySaved) {
+      toast.info("Workout is already saved.");
       return;
     }
 
     setSaved([...saved, workout]);
+    toast.success("Workout saved for later.");
   };
 
   return (

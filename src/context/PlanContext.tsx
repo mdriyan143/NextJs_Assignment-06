@@ -1,6 +1,12 @@
 "use client";
+
 import { Workout } from "@/types/workout.type";
-import React, { createContext, ReactNode, useState } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
 
 interface IPlanContext {
   plan: Workout[];
@@ -16,9 +22,38 @@ export const PlanContext = createContext<IPlanContext>({
   setSaved: () => {},
 });
 
-const PlanProvider = ({ children }: { children: ReactNode }) => {
+const PlanProvider = ({ children }: {children: ReactNode }) => {
   const [plan, setPlan] = useState<Workout[]>([]);
   const [saved, setSaved] = useState<Workout[]>([]);
+
+  
+  useEffect(() => {
+    const savedPlan = localStorage.getItem("fitlog-plan");
+    const savedWorkouts =
+      localStorage.getItem("fitlog-saved");
+
+    if (savedPlan) {
+      setPlan(JSON.parse(savedPlan));
+    }
+
+    if (savedWorkouts) {
+      setSaved(JSON.parse(savedWorkouts));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "fitlog-plan",
+      JSON.stringify(plan)
+    );
+  }, [plan]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "fitlog-saved",
+      JSON.stringify(saved)
+    );
+  }, [saved]);
 
   const sharedData = {
     plan,
