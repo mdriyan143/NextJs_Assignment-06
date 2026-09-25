@@ -22,8 +22,7 @@ const PlanListItem = ({
   return (
     <div
       className={`flex flex-col gap-4 rounded-xl border p-4 transition sm:flex-row sm:items-center ${
-        isCompleted
-          ? "border-lime-400/30 bg-lime-400/5 opacity-60"
+        isCompleted ? "border-lime-400/30 bg-lime-400/5 opacity-60"
           : "border-zinc-800 bg-zinc-900/70"}`}>
       <div className="relative h-20 w-full shrink-0 overflow-hidden rounded-lg sm:w-36">
         <Image
