@@ -11,8 +11,7 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
   return (
     <Link
       href={`/workouts/${workout.id}`}
-      className="group block overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 transition hover:-translate-y-1 hover:border-zinc-700"
-    >
+      className="group block overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 transition hover:-translate-y-1 hover:border-zinc-700" >
       <div className="relative aspect-4/3 overflow-hidden bg-zinc-800">
         <Image
           src={workout.image}
@@ -41,9 +40,9 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
         </p>
 
         <div className="mt-5 flex items-center gap-4 text-sm text-zinc-400">
-          <span>{workout.duration} min</span>
-          <span>{workout.caloriesBurned} kcal</span>
-          <span>★ {workout.rating}</span>
+          <span>◷ {workout.duration} min</span>
+          <span>♨ {workout.caloriesBurned} kcal</span>
+          <span>☆ {workout.rating}</span>
         </div>
       </div>
     </Link>

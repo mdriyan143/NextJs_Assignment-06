@@ -22,11 +22,10 @@ export const PlanContext = createContext<IPlanContext>({
   setSaved: () => {},
 });
 
-const PlanProvider = ({ children }: {children: ReactNode }) => {
+const PlanProvider = ({children}: {children: ReactNode }) => {
   const [plan, setPlan] = useState<Workout[]>([]);
   const [saved, setSaved] = useState<Workout[]>([]);
 
-  
   useEffect(() => {
     const savedPlan = localStorage.getItem("fitlog-plan");
     const savedWorkouts =
@@ -44,9 +43,8 @@ const PlanProvider = ({ children }: {children: ReactNode }) => {
   useEffect(() => {
     localStorage.setItem(
       "fitlog-plan",
-      JSON.stringify(plan)
-    );
-  }, [plan]);
+      JSON.stringify(plan));
+    }, [plan]);
 
   useEffect(() => {
     localStorage.setItem(
