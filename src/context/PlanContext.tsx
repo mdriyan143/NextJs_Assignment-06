@@ -5,6 +5,7 @@ import React, {
   createContext,
   ReactNode,
   useEffect,
+  useRef,
   useState,
 } from "react";
 
@@ -22,9 +23,12 @@ export const PlanContext = createContext<IPlanContext>({
   setSaved: () => {},
 });
 
-const PlanProvider = ({children}: {children: ReactNode }) => {
+const PlanProvider = ({children}: {children: ReactNode}) => {
   const [plan, setPlan] = useState<Workout[]>([]);
   const [saved, setSaved] = useState<Workout[]>([]);
+
+  const planLoaded = useRef(false);
+  const savedLoaded = useRef(false);
 
   useEffect(() => {
     const savedPlan = localStorage.getItem("fitlog-plan");
@@ -41,12 +45,23 @@ const PlanProvider = ({children}: {children: ReactNode }) => {
   }, []);
 
   useEffect(() => {
+    if (!planLoaded.current) {
+      planLoaded.current = true;
+      return;
+    }
+
     localStorage.setItem(
       "fitlog-plan",
-      JSON.stringify(plan));
-    }, [plan]);
+      JSON.stringify(plan)
+    );
+  }, [plan]);
 
   useEffect(() => {
+    if (!savedLoaded.current) {
+      savedLoaded.current = true;
+      return;
+    }
+
     localStorage.setItem(
       "fitlog-saved",
       JSON.stringify(saved)

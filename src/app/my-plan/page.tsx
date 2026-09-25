@@ -28,21 +28,21 @@ const MyPlanPage = () => {
   const [sortBy, setSortBy] =
     useState<"duration" | "calories" | "rating">("duration");
 
-  const totalMinutes = plan.reduce(
+  const activeWorkouts = activeTab === "plan" ? plan : saved;
+
+  const totalMinutes = activeWorkouts.reduce(
     (total, workout) =>
       total + workout.duration,
     0
   );
 
-  const totalCalories = plan.reduce(
+  const totalCalories = activeWorkouts.reduce(
     (total, workout) =>
       total + workout.caloriesBurned,
     0
   );
 
-  const activeWorkouts = activeTab === "plan" ? plan : saved;
-
-  const sortedWorkouts = [ ...activeWorkouts ].sort((a, b) => {
+  const sortedWorkouts = [...activeWorkouts].sort((a, b) => {
     if (sortBy === "duration") {
       return a.duration - b.duration;
     }
@@ -101,23 +101,25 @@ const MyPlanPage = () => {
           </h1>
 
           <p className="mt-2 text-sm text-zinc-500">
-            Cap of five lifts for today. Finish them, then load more.
+            {activeTab === "plan"
+              ? "Cap of five lifts for today. Finish them, then load more."
+              : "Your saved workouts are ready when you are."}
           </p>
         </div>
 
         <PlanStats
-          exercises={plan.length}
+          exercises={activeWorkouts.length}
           minutes={totalMinutes}
-          calories={totalCalories}/>
+          calories={totalCalories} />
 
         <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <PlanTabs
             activeTab={activeTab}
-            setActiveTab={setActiveTab}/>
+            setActiveTab={setActiveTab} />
 
           <SortDropdown
             sortBy={sortBy}
-            setSortBy={setSortBy}/>
+            setSortBy={setSortBy} />
         </div>
 
         {sortedWorkouts.length === 0 ? (
@@ -128,14 +130,10 @@ const MyPlanPage = () => {
               <PlanListItem
                 key={workout.id}
                 workout={workout}
-                isCompleted={completed.includes(
-                  workout.id
-                )}
+                isCompleted={completed.includes(workout.id)}
                 onDone={handleDone}
                 onRemove={handleRemove}
-                showDone={
-                  activeTab === "plan"
-                }/>
+                showDone={activeTab === "plan"} />
             ))}
           </div>
         )}
