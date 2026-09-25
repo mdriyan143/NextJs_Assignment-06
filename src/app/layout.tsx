@@ -30,15 +30,25 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <PlanProvider>
-        <Navbar/>
+          <Navbar />
 
-        {children}
+          {children}
 
-        
-        <Footer/>
+
+          <Footer />
         </PlanProvider>
-          <ToastContainer />
-        </body>
+        <ToastContainer
+          position="top-right"
+          autoClose={2500}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          pauseOnHover
+          theme="dark"
+          toastClassName="!rounded-2xl !border !border-zinc-800 !bg-zinc-900 !text-white !shadow-xl"
+          bodyClassName="!text-sm !font-medium !text-zinc-200"
+        />
+      </body>
     </html>
   );
 }
