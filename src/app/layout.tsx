@@ -46,7 +46,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           pauseOnHover
           theme="dark"
           toastClassName="!rounded-2xl !border !border-zinc-800 !bg-zinc-900 !text-white !shadow-xl"
-          bodyClassName="!text-sm !font-medium !text-zinc-200"
         />
       </body>
     </html>
