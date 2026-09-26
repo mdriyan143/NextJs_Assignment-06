@@ -10,7 +10,7 @@ type WorkoutDetailsPageProps = {
 
 const getWorkout = async (id: string): Promise<Workout | null> => {
     try {
-        const response = await fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`);
+        const response = await fetch(`https://api.api-store.workers.dev/api/fitlog/${id}`);
 
         if (!response.ok) {
             return null;
