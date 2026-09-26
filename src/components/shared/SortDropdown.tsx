@@ -5,10 +5,7 @@ type SortDropdownProps = {
   setSortBy: (value: SortValue) => void;
 };
 
-const SortDropdown = ({
-  sortBy,
-  setSortBy,
-}: SortDropdownProps) => {
+const SortDropdown = ({ sortBy, setSortBy}: SortDropdownProps) => {
   return (
     <div className="flex items-center gap-3">
       <span className="text-xs text-zinc-500">
@@ -20,7 +17,7 @@ const SortDropdown = ({
           value={sortBy}
           onChange={(event) =>
             setSortBy( event.target.value as SortValue )}
-          className="appearance-none rounded-lg border border-zinc-800 bg-zinc-950 py-2 pl-3 pr-9 text-xs text-white outline-none transition hover:border-zinc-700">
+          className="appearance-none rounded-lg border border-lime-500 bg-zinc-950 py-2 pl-3 pr-9 text-xs text-white outline-none transition hover:border-zinc-700">
           <option value="duration">
             Duration
           </option>

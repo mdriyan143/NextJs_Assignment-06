@@ -39,7 +39,7 @@ const WorkoutActions = ({ workout }: WorkoutActionsProps) => {
 
     setPlan([...plan, workout]);
 
-    toast.success("Workout added to your plan.");
+    toast.success(`${workout.name} workout added to your plan.`);
   };
 
   const handleSave = () => {
@@ -54,7 +54,7 @@ const WorkoutActions = ({ workout }: WorkoutActionsProps) => {
 
     setSaved([...saved, workout]);
 
-    toast.success("Workout saved for later.");
+    toast.success(`${workout.name} workout saved for later.`);
   };
 
   return (
