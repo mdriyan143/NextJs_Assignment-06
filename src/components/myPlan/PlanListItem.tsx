@@ -1,8 +1,8 @@
 "use client";
-
+import React from 'react';
 import Image from "next/image";
 import Link from "next/link";
-
+import { PiClock, PiFire, PiStar } from "react-icons/pi";
 import type { Workout } from "@/types/workout.type";
 
 type PlanListItemProps = {
@@ -21,21 +21,19 @@ const PlanListItem = ({
   showDone }: PlanListItemProps) => {
   return (
     <div
-      className={`flex flex-col gap-4 rounded-xl border p-4 transition sm:flex-row sm:items-center ${
-        isCompleted ? "border-lime-400/30 bg-lime-400/5 opacity-60"
+      className={`flex flex-col gap-4 rounded-xl border p-4 transition sm:flex-row sm:items-center ${isCompleted ? "border-lime-400/30 bg-lime-400/5 opacity-60"
           : "border-zinc-800 bg-zinc-900/70"}`}>
       <div className="relative h-20 w-full shrink-0 overflow-hidden rounded-lg sm:w-36">
         <Image
           src={workout.image}
           alt={workout.name}
           fill
-          className="object-cover"/>
+          className="object-cover" />
       </div>
 
       <div className="min-w-0 flex-1">
         <h2
-          className={`text-base font-black uppercase tracking-tight ${
-            isCompleted ? "text-zinc-500 line-through" : "text-white"}`}>
+          className={`text-base font-black uppercase tracking-tight ${isCompleted ? "text-zinc-500 line-through" : "text-white"}`}>
           {workout.name}
         </h2>
 
@@ -43,26 +41,20 @@ const PlanListItem = ({
           {workout.equipment}
         </p>
 
-        
+
         <div className="mt-2 flex flex-wrap items-center gap-4 text-xs text-zinc-400">
           <span className="flex items-center gap-1">
-            <span className="text-lime-400">
-              ◷
-            </span>
+            <PiClock className="h-4 w-4 text-lime-400" />
             {workout.duration} min
           </span>
 
           <span className="flex items-center gap-1">
-            <span className="text-lime-400">
-              ♨
-            </span>
+            <PiFire className="h-4 w-4 text-lime-400" />
             {workout.caloriesBurned} kcal
           </span>
 
           <span className="flex items-center gap-1">
-            <span className="text-lime-400">
-              ☆
-            </span>
+            <PiStar className="h-4 w-4 text-lime-400" />
             {workout.rating}
           </span>
         </div>
