@@ -14,6 +14,7 @@ interface IPlanContext {
   setPlan: React.Dispatch<React.SetStateAction<Workout[]>>;
   saved: Workout[];
   setSaved: React.Dispatch<React.SetStateAction<Workout[]>>;
+  isLoading: boolean;
 }
 
 export const PlanContext = createContext<IPlanContext>({
@@ -21,11 +22,13 @@ export const PlanContext = createContext<IPlanContext>({
   setPlan: () => {},
   saved: [],
   setSaved: () => {},
+  isLoading: true,
 });
 
 const PlanProvider = ({children}: {children: ReactNode}) => {
   const [plan, setPlan] = useState<Workout[]>([]);
   const [saved, setSaved] = useState<Workout[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const planLoaded = useRef(false);
   const savedLoaded = useRef(false);
@@ -42,6 +45,9 @@ const PlanProvider = ({children}: {children: ReactNode}) => {
     if (savedWorkouts) {
       setSaved(JSON.parse(savedWorkouts));
     }
+
+     setIsLoading(false);
+
   }, []);
 
   useEffect(() => {
@@ -73,6 +79,7 @@ const PlanProvider = ({children}: {children: ReactNode}) => {
     setPlan,
     saved,
     setSaved,
+    isLoading,
   };
 
   return (

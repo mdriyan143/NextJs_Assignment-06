@@ -1,5 +1,4 @@
-import React from 'react';
-import WorkoutCard from "@/components/shared/WorkoutCard";
+import WorkoutLibrary from "@/components/shared/homepage/WorkoutLibrary";
 import type { Workout } from "@/types/workout.type";
 
 const getWorkouts = async (): Promise<Workout[]> => {
@@ -13,10 +12,10 @@ const getWorkouts = async (): Promise<Workout[]> => {
     const data: Workout[] = await response.json();
 
     return data;
-  }
-
+  } 
+  
   catch (error) {
-    console.error("Error fetching workouts:", error);
+    console.error("Error fetching workouts:",error);
 
     return [];
   }
@@ -45,13 +44,8 @@ const Workouts = async () => {
           </p>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {workouts.map((workout) => (
-            <WorkoutCard
-              key={workout.id}
-              workout={workout} />
-          ))}
-        </div>
+        <WorkoutLibrary
+          workouts={workouts}/>
 
       </div>
     </section>
